@@ -70,4 +70,10 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.icons)
+    implementation(libs.gson)
+    implementation(libs.coil)
+    implementation(libs.lottie)
+    implementation(libs.constraintlayout)
+    implementation(libs.accompanist)
 }
