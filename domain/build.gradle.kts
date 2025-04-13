@@ -11,4 +11,7 @@ java {
 dependencies {
     implementation(libs.hilt.core)
     kapt(libs.hilt.compiler)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
 }

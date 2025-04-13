@@ -7,14 +7,14 @@ import com.example.domain.utils.CoroutineResult
 import javax.inject.Inject
 
 interface GetCharacterListUseCase {
-    suspend operator fun invoke(): CoroutineResult<List<MarvelCharacter>>
+    operator fun invoke(): CoroutineResult<List<MarvelCharacter>>
 }
 
 class GetCharacterListUseCaseImpl @Inject constructor(
     private val characterService: CharacterService,
     private val marvelRepository: MarvelRepository
 ) : GetCharacterListUseCase {
-    override suspend operator fun invoke(): CoroutineResult<List<MarvelCharacter>> {
+    override operator fun invoke(): CoroutineResult<List<MarvelCharacter>> {
         return when (val serviceResult = characterService.getCharacterList()) {
             is CoroutineResult.Success -> {
                 marvelRepository.insertCharactersToDB(serviceResult.data)

@@ -64,6 +64,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 mockk-android = {module = "io.mockk:mockk-android", version.ref = "mockkVersion" }
 mockk-agent = {module = "io.mockk:mockk-agent", version.ref = "mockkVersion" }
+mockk = {module = "io.mockk:mockk", version.ref = "mockkVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
