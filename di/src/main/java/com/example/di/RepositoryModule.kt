@@ -1,6 +1,6 @@
 package com.example.di
 
-import com.example.data.db.MarvelRepositoryImpl
+import com.example.data.database.MarvelRepositoryImpl
 import com.example.domain.db.MarvelRepository
 import dagger.Module
 import dagger.Provides

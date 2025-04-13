@@ -5,5 +5,6 @@ import com.example.domain.utils.CoroutineResult
 
 
 interface CharacterService {
-    suspend fun getCharacterList(): CoroutineResult<List<MarvelCharacter>>
+    fun getCharacterList(): CoroutineResult<List<MarvelCharacter>>
+    fun getCharacter(characterId: Int): CoroutineResult<MarvelCharacter>
 }

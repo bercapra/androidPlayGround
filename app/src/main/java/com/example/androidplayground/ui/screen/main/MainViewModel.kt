@@ -21,10 +21,10 @@ class MainViewModel @Inject constructor(
         }.let { result ->
             when(result){
                 is CoroutineResult.Success -> {
-                    Log.d("Characters", result.data.toString())
+                    Log.d("Characters List", result.data.toString())
                 }
                 is CoroutineResult.Failure -> {
-                    Log.d("Characters", result.exception.toString())
+                    Log.e("Characters ERROR", result.exception.toString())
                 }
             }
         }

@@ -1,7 +1,8 @@
 package com.example.androidplayground.di
 
-import com.example.di.DataSourceModule
+import com.example.di.ApiModule
 import com.example.di.RepositoryModule
+import com.example.di.ServiceModule
 import com.example.di.UseCaseModule
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -9,9 +10,10 @@ import dagger.hilt.components.SingletonComponent
 
 @Module (
     includes = [
-        UseCaseModule::class,
+        ApiModule::class,
         RepositoryModule::class,
-        DataSourceModule::class
+        ServiceModule::class,
+        UseCaseModule::class
     ]
 )
 @InstallIn(SingletonComponent::class)

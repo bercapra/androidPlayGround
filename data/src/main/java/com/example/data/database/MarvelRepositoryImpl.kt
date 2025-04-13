@@ -1,4 +1,4 @@
-package com.example.data.db
+package com.example.data.database
 
 import com.example.domain.db.MarvelRepository
 import com.example.domain.entity.MarvelCharacter

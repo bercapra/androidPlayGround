@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlinx-serialization")
     kotlin("kapt")
 }
 
@@ -8,11 +9,19 @@ android {
     namespace = "com.example.data"
     compileSdk = 35
 
+    buildFeatures {
+        buildConfig = true // Enable custom BuildConfig fields
+    }
+
     defaultConfig {
         minSdk = 29
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "MARVEL_BASE_URL", "\"https://gateway.marvel.com\"")
+        buildConfigField("String", "API_VALUE", "\"fa5f4b9409fd54fc57cac09221b2586e\"")
+        buildConfigField("String", "HASH_VALUE", "\"a67aaa24af98a03410de28e000b1c64d\"")
     }
 
     buildTypes {
@@ -44,4 +53,13 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.retrofit2)
+    implementation(libs.okhttp3)
+
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.converter)
+
+    implementation(libs.chucker)
 }
