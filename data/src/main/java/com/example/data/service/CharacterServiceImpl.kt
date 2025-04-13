@@ -36,5 +36,3 @@ class CharacterServiceImpl @Inject constructor(private val marvelApi: MarvelApi)
         return CoroutineResult.Failure(Exception())
     }
 }
-
-

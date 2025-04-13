@@ -62,4 +62,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.converter)
 
     implementation(libs.chucker)
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 }

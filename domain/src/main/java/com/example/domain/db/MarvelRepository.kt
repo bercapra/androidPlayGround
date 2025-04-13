@@ -4,6 +4,9 @@ import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 
 interface MarvelRepository {
-    suspend fun getDBCharacters(): CoroutineResult<List<MarvelCharacter>>
-    suspend fun insertCharactersToDB(charactersList: List<MarvelCharacter>)
+    fun getDBCharacters(): CoroutineResult<List<MarvelCharacter>>
+    fun getCharacter(characterId: Int): CoroutineResult<MarvelCharacter>
+    fun insertCharactersToDB(charactersList: List<MarvelCharacter>)
+    fun insertCharacterToDB(character: MarvelCharacter)
 }
+

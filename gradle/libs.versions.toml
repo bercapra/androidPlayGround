@@ -22,6 +22,8 @@ serializationConverter = "0.8.0"
 kotlinSerializarionPlugIn = "1.6.10"
 chuckerVersion = "3.5.2"
 
+room = "2.4.3"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -53,6 +55,10 @@ kotlinx-serialization-json = {module = "org.jetbrains.kotlinx:kotlinx-serializat
 kotlinx-serialization-converter = {module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "serializationConverter" }
 
 chucker = {module = "com.github.chuckerteam.chucker:library", version.ref = "chuckerVersion" }
+
+room-runtime = {module = "androidx.room:room-runtime", version.ref = "room" }
+room-ktx = {module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = {module = "androidx.room:room-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
