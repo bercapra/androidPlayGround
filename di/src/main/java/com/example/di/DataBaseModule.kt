@@ -2,9 +2,9 @@ package com.example.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.database.MarvelDB
-import com.example.data.database.MarvelDao
-import com.example.data.database.MarvelRepositoryImpl
+import com.example.data.datasource.local.MarvelDB
+import com.example.data.datasource.local.MarvelDao
+import com.example.data.repository.MarvelRepositoryImpl
 import com.example.domain.db.MarvelRepository
 import dagger.Module
 import dagger.Provides

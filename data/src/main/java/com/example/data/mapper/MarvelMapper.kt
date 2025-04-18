@@ -1,8 +1,8 @@
 package com.example.data.mapper
 
-import com.example.data.database.entity.CharacterEntity
-import com.example.data.service.model.CharacterResponse
-import com.example.data.service.model.DataResponse
+import com.example.data.datasource.local.entity.CharacterLocalEntity
+import com.example.data.datasource.remote.model.CharacterResponse
+import com.example.data.datasource.remote.model.DataResponse
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.Constants.DOT
 
@@ -16,7 +16,7 @@ fun CharacterResponse.mapToLocalCharacter() =
         img = "${img.path}$DOT${img.ext}"
     )
 
-fun CharacterEntity.mapToLocalCharacter() =
+fun CharacterLocalEntity.mapToLocalCharacter() =
     MarvelCharacter(
         id = id,
         name = name,
@@ -25,11 +25,11 @@ fun CharacterEntity.mapToLocalCharacter() =
     )
 
 fun MarvelCharacter.mapToDataBaseCharacter() =
-    CharacterEntity(
+    CharacterLocalEntity(
         id = id,
         name = name,
         description = description,
         img = img
     )
 
-fun List<CharacterEntity>.mapToCharacterList() = this.map { it.mapToLocalCharacter() }
+fun List<CharacterLocalEntity>.mapToCharacterList() = this.map { it.mapToLocalCharacter() }

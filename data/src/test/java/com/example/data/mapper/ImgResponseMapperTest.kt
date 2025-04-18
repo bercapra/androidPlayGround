@@ -1,6 +1,6 @@
 package com.example.data.mapper
 
-import com.example.data.service.model.ImgResponse
+import com.example.data.datasource.remote.model.ImgResponse
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

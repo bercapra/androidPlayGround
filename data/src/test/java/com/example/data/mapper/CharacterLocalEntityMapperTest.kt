@@ -1,18 +1,18 @@
 package com.example.data.mapper
 
-import com.example.data.database.entity.CharacterEntity
+import com.example.data.datasource.local.entity.CharacterLocalEntity
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class CharacterEntityMapperTest {
-    private lateinit var characterEntity: CharacterEntity
-    private lateinit var characterEntityList: List<CharacterEntity>
+class CharacterLocalEntityMapperTest {
+    private lateinit var characterEntity: CharacterLocalEntity
+    private lateinit var characterEntityList: List<CharacterLocalEntity>
 
     @Before
     fun init() {
-        characterEntity = CharacterEntity(ID, NAME, DESCRIPTION, IMG)
-        characterEntityList = mutableListOf(CharacterEntity(ID, NAME, DESCRIPTION, IMG))
+        characterEntity = CharacterLocalEntity(ID, NAME, DESCRIPTION, IMG)
+        characterEntityList = mutableListOf(CharacterLocalEntity(ID, NAME, DESCRIPTION, IMG))
     }
 
     @Test

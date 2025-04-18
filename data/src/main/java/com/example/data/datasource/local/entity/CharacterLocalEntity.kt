@@ -1,10 +1,10 @@
-package com.example.data.database.entity
+package com.example.data.datasource.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "marvel_characters")
-class CharacterEntity(
+class CharacterLocalEntity(
     @PrimaryKey val id: Int,
     val name: String,
     val description: String,

@@ -1,7 +1,7 @@
-package com.example.data.service.api
+package com.example.data.datasource.remote.api
 
-import com.example.data.service.model.CharacterResponse
-import com.example.data.service.model.DataResponse
+import com.example.data.datasource.remote.model.CharacterResponse
+import com.example.data.datasource.remote.model.DataResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

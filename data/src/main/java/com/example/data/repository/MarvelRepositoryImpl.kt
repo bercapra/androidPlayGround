@@ -1,5 +1,6 @@
-package com.example.data.database
+package com.example.data.repository
 
+import com.example.data.datasource.local.MarvelDao
 import com.example.data.mapper.mapToCharacterList
 import com.example.data.mapper.mapToDataBaseCharacter
 import com.example.data.mapper.mapToLocalCharacter

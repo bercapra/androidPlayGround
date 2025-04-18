@@ -32,6 +32,7 @@ coilVersion = "2.1.0"
 lottieVersion = "5.2.0"
 constraintlayoutVersion = "1.0.1"
 accompanistVersion = "0.27.0"
+coreKtxVersion = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -79,6 +80,7 @@ coil = {module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 lottie = {module = "com.airbnb.android:lottie-compose", version.ref = "lottieVersion" }
 constraintlayout = {module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutVersion" }
 accompanist = {module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistVersion" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

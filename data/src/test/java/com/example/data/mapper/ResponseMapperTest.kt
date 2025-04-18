@@ -1,9 +1,9 @@
 package com.example.data.mapper
 
-import com.example.data.service.model.CharacterResponse
-import com.example.data.service.model.DataResponse
-import com.example.data.service.model.ImgResponse
-import com.example.data.service.model.ResultResponse
+import com.example.data.datasource.remote.model.CharacterResponse
+import com.example.data.datasource.remote.model.DataResponse
+import com.example.data.datasource.remote.model.ImgResponse
+import com.example.data.datasource.remote.model.ResultResponse
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
