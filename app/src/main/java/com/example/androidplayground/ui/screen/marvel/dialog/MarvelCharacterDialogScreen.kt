@@ -1,4 +1,4 @@
-package com.example.androidplayground.ui.screen
+package com.example.androidplayground.ui.screen.marvel.dialog
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -33,14 +33,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.androidplayground.ui.component.CardContentText
 import com.example.androidplayground.ui.component.CardDescriptionText
 import com.example.androidplayground.ui.component.RemoteImage
-import com.example.androidplayground.ui.screen.MarvelCharacterDialogScreenId.CHARACTER_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MarvelCharacterDialogScreenId.DESCRIPTION_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MarvelCharacterDialogScreenId.IMAGE_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MarvelCharacterDialogScreenId.NAME_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.CHARACTER_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.DESCRIPTION_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.IMAGE_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.NAME_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 import com.example.androidplayground.ui.theme.GradientEnd
 import com.example.androidplayground.ui.theme.GradientStart
-import com.example.androidplayground.viewmodel.MarvelCharacterDialogViewModel
 import com.example.domain.entity.MarvelCharacter
 
 @Composable

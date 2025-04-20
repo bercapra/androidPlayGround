@@ -36,6 +36,5 @@ fun MarvelApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = AppScreen.Splash.route) {
         addFeedScreenGraph(navController)
-//        addMarvelCharacterDetailScreenGraph(navController)
     }
 }

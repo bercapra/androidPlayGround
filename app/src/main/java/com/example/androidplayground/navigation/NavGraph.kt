@@ -10,10 +10,10 @@ import com.example.androidplayground.navigation.AppDestination.MARVEL_CHARACTER_
 import com.example.androidplayground.navigation.model.MarvelCharacterArgType
 import com.example.androidplayground.navigation.model.NavMarvelCharacter
 import com.example.androidplayground.navigation.model.toMarvelCharacter
-import com.example.androidplayground.ui.screen.MainScreen
-import com.example.androidplayground.ui.screen.MarvelCharacterDialogScreen
-import com.example.androidplayground.ui.screen.MarvelCharacterListScreen
-import com.example.androidplayground.ui.screen.SplashScreen
+import com.example.androidplayground.ui.screen.main.MainScreen
+import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreen
+import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreen
+import com.example.androidplayground.ui.screen.marvel.splash.SplashScreen
 import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreen
 import com.google.gson.Gson
 

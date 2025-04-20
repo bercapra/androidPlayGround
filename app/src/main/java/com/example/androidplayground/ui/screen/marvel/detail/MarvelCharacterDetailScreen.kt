@@ -32,7 +32,7 @@ import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenI
 import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.NAME_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 import com.example.androidplayground.ui.util.OnLifecycleEvent
-import com.example.androidplayground.viewmodel.MarvelCharacterDetailViewModel
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailViewModel
 import com.example.domain.entity.MarvelCharacter
 
 @Composable

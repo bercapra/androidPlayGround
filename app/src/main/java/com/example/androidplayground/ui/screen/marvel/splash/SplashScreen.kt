@@ -1,4 +1,4 @@
-package com.example.androidplayground.ui.screen
+package com.example.androidplayground.ui.screen.marvel.splash
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -14,7 +14,6 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
-import com.example.androidplayground.viewmodel.SplashViewModel
 import com.example.androidplayground.R
 
 @Composable

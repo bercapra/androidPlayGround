@@ -1,4 +1,4 @@
-package com.example.androidplayground.ui.screen
+package com.example.androidplayground.ui.screen.marvel.list
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,11 +21,10 @@ import com.example.androidplayground.ui.component.ErrorDialog
 import com.example.androidplayground.ui.component.Loader
 import com.example.androidplayground.ui.component.MarvelCard
 import com.example.androidplayground.ui.component.TitleText
-import com.example.androidplayground.ui.screen.MarvelCharacterListScreenId.CONTENT_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MarvelCharacterListScreenId.TITLE_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.CONTENT_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 import com.example.androidplayground.ui.util.OnLifecycleEvent
-import com.example.androidplayground.viewmodel.MarvelCharacterListViewModel
 import com.example.domain.entity.MarvelCharacter
 
 @Composable

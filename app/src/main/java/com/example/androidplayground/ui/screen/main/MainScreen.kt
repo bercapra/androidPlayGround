@@ -1,4 +1,4 @@
-package com.example.androidplayground.ui.screen
+package com.example.androidplayground.ui.screen.main
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,12 +23,11 @@ import androidx.lifecycle.Lifecycle
 import com.example.androidplayground.ui.component.BackgroundImage
 import com.example.androidplayground.ui.component.ContentText
 import com.example.androidplayground.ui.component.TitleText
-import com.example.androidplayground.ui.screen.MainScreenId.BUTTON_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MainScreenId.CONTENT_LAYOUT_ID
-import com.example.androidplayground.ui.screen.MainScreenId.TITLE_LAYOUT_ID
+import com.example.androidplayground.ui.screen.main.MainScreenId.BUTTON_LAYOUT_ID
+import com.example.androidplayground.ui.screen.main.MainScreenId.CONTENT_LAYOUT_ID
+import com.example.androidplayground.ui.screen.main.MainScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 import com.example.androidplayground.ui.util.OnLifecycleEvent
-import com.example.androidplayground.viewmodel.MainViewModel
 
 @Composable
 fun MainScreen(

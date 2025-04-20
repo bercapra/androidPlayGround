@@ -1,4 +1,4 @@
-package com.example.androidplayground.viewmodel
+package com.example.androidplayground.ui.screen.marvel.dialog
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

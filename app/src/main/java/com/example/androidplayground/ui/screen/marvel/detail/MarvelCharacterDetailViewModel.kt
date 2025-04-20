@@ -1,4 +1,4 @@
-package com.example.androidplayground.viewmodel
+package com.example.androidplayground.ui.screen.marvel.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
