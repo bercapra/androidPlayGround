@@ -3,12 +3,12 @@ package com.example.data.datasource.remote
 import com.example.data.mapper.mapToLocalCharacter
 import com.example.data.mapper.mapToLocalCharacterList
 import com.example.data.datasource.remote.api.MarvelApi
-import com.example.domain.datasource.CharacterService
+import com.example.domain.datasource.remote.CharacterRemoteDatasource
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 import javax.inject.Inject
 
-class CharacterRemoteImpl @Inject constructor(private val marvelApi: MarvelApi) : CharacterService {
+class CharacterRemoteImpl @Inject constructor(private val marvelApi: MarvelApi) : CharacterRemoteDatasource {
 
     override fun getCharacterList(): CoroutineResult<List<MarvelCharacter>> {
         try {

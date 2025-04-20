@@ -1,18 +1,18 @@
 package com.example.domain.usecase
 
-import com.example.domain.datasource.CharacterService
-import com.example.domain.db.MarvelRepository
+import com.example.domain.datasource.local.MarvelLocalDatasource
+import com.example.domain.datasource.remote.CharacterRemoteDatasource
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 import javax.inject.Inject
 
-interface GetCharacterListUseCase {
+fun interface GetCharacterListUseCase {
     operator fun invoke(): CoroutineResult<List<MarvelCharacter>>
 }
 
 class GetCharacterListUseCaseImpl @Inject constructor(
-    private val characterService: CharacterService,
-    private val marvelRepository: MarvelRepository
+    private val characterService: CharacterRemoteDatasource,
+    private val marvelRepository: MarvelLocalDatasource
 ) : GetCharacterListUseCase {
     override operator fun invoke(): CoroutineResult<List<MarvelCharacter>> {
         return when (val serviceResult = characterService.getCharacterList()) {
@@ -20,6 +20,7 @@ class GetCharacterListUseCaseImpl @Inject constructor(
                 marvelRepository.insertCharactersToDB(serviceResult.data)
                 marvelRepository.getDBCharacters()
             }
+
             is CoroutineResult.Failure -> marvelRepository.getDBCharacters()
         }
     }

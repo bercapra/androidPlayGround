@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.data.datasource.local.MarvelDB
 import com.example.data.datasource.local.MarvelDao
-import com.example.data.repository.MarvelRepositoryImpl
-import com.example.domain.db.MarvelRepository
+import com.example.data.datasource.local.MarvelLocalDatasourceImpl
+import com.example.domain.datasource.local.MarvelLocalDatasource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +32,5 @@ object DataBaseModule {
     fun provideMarvelDao(marvelDB: MarvelDB): MarvelDao = marvelDB.marvelDao()
 
     @Provides
-    fun provideMarvelRepository(marvelDao: MarvelDao): MarvelRepository = MarvelRepositoryImpl(marvelDao)
+    fun provideMarvelRepository(marvelDao: MarvelDao): MarvelLocalDatasource = MarvelLocalDatasourceImpl(marvelDao)
 }

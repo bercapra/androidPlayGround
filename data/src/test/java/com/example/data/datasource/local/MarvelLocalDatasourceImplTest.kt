@@ -1,6 +1,5 @@
-package com.example.data.repository
+package com.example.data.datasource.local
 
-import com.example.data.datasource.local.MarvelDao
 import com.example.data.datasource.local.entity.CharacterLocalEntity
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
@@ -13,15 +12,15 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class MarvelRepositoryImplTest {
+class MarvelLocalDatasourceImplTest {
 
     private lateinit var marvelDao: MarvelDao
-    private lateinit var repository: MarvelRepositoryImpl
+    private lateinit var repository: MarvelLocalDatasourceImpl
 
     @Before
     fun setUp() {
         marvelDao = mockk(relaxed = true)
-        repository = MarvelRepositoryImpl(marvelDao)
+        repository = MarvelLocalDatasourceImpl(marvelDao)
     }
 
     @Test

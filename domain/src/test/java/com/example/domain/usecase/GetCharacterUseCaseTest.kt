@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
-import com.example.domain.datasource.CharacterService
-import com.example.domain.db.MarvelRepository
+import com.example.domain.datasource.local.MarvelLocalDatasource
+import com.example.domain.datasource.remote.CharacterRemoteDatasource
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 import io.mockk.MockKAnnotations
@@ -15,9 +15,10 @@ import org.junit.Test
 class GetCharacterUseCaseTest {
 
     @MockK
-    private lateinit var characterService: CharacterService
+    private lateinit var characterService: CharacterRemoteDatasource
+
     @MockK
-    private lateinit var marvelRepository: MarvelRepository
+    private lateinit var marvelRepository: MarvelLocalDatasource
 
     private var marvelCharacter: MarvelCharacter = MarvelCharacter(ID, NAME, DESCRIPTION, IMG)
 
@@ -70,8 +71,10 @@ class GetCharacterUseCaseTest {
     companion object {
         private const val ID = 1011347
         private const val NAME = "Spider-Man"
-        private const val DESCRIPTION = "With great power there must also come great responsibility."
-        private const val IMG = "http://terrigen-cdn-dev.marvel.com/content/prod/1x/203ham_com_crd_01.jpg"
+        private const val DESCRIPTION =
+            "With great power there must also come great responsibility."
+        private const val IMG =
+            "http://terrigen-cdn-dev.marvel.com/content/prod/1x/203ham_com_crd_01.jpg"
         private const val MSG = "ERROR"
     }
 }

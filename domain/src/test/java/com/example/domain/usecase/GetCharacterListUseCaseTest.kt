@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
-import com.example.domain.datasource.CharacterService
-import com.example.domain.db.MarvelRepository
+import com.example.domain.datasource.local.MarvelLocalDatasource
+import com.example.domain.datasource.remote.CharacterRemoteDatasource
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 import io.mockk.MockKAnnotations
@@ -15,9 +15,11 @@ import org.junit.Test
 class GetCharacterListUseCaseTest {
 
     @MockK
-    private lateinit var characterService: CharacterService
+    private lateinit var characterService: CharacterRemoteDatasource
+
     @MockK
-    private lateinit var marvelRepository: MarvelRepository
+    private lateinit var marvelRepository: MarvelLocalDatasource
+
     @MockK
     private lateinit var characterList: List<MarvelCharacter>
 

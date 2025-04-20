@@ -2,7 +2,7 @@ package com.example.di
 
 import com.example.data.datasource.remote.CharacterRemoteImpl
 import com.example.data.datasource.remote.api.MarvelApi
-import com.example.domain.datasource.CharacterService
+import com.example.domain.datasource.remote.CharacterRemoteDatasource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ import dagger.hilt.components.SingletonComponent
 class ServiceModule {
 
     @Provides
-    fun provideCharacterService(marvelApi: MarvelApi): CharacterService = CharacterRemoteImpl(marvelApi)
+    fun provideCharacterService(marvelApi: MarvelApi): CharacterRemoteDatasource = CharacterRemoteImpl(marvelApi)
 }

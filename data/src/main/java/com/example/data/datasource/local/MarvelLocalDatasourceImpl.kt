@@ -1,14 +1,13 @@
-package com.example.data.repository
+package com.example.data.datasource.local
 
-import com.example.data.datasource.local.MarvelDao
 import com.example.data.mapper.mapToCharacterList
 import com.example.data.mapper.mapToDataBaseCharacter
 import com.example.data.mapper.mapToLocalCharacter
-import com.example.domain.db.MarvelRepository
+import com.example.domain.datasource.local.MarvelLocalDatasource
 import com.example.domain.entity.MarvelCharacter
 import com.example.domain.utils.CoroutineResult
 
-class MarvelRepositoryImpl(private val charactersDao: MarvelDao) : MarvelRepository {
+class MarvelLocalDatasourceImpl(private val charactersDao: MarvelDao) : MarvelLocalDatasource {
 
     override fun getDBCharacters(): CoroutineResult<List<MarvelCharacter>> =
         charactersDao.getDBCharacters().let {
