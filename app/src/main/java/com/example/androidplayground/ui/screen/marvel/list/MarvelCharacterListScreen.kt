@@ -10,12 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androidplayground.R
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.component.BackgroundImage
 import com.example.androidplayground.ui.component.ErrorDialog
 import com.example.androidplayground.ui.component.Loader
@@ -24,7 +24,11 @@ import com.example.androidplayground.ui.component.TitleText
 import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.CONTENT_LAYOUT_ID
 import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
-import com.example.androidplayground.ui.util.OnLifecycleEvent
+import com.example.androidplayground.ui.util.OnLifecycleEventEffect
+import com.example.androidplayground.ui.util.preview.previewCharacterDefault
+import com.example.androidplayground.ui.util.preview.previewCharacterLongDescription
+import com.example.androidplayground.ui.util.preview.previewCharacterNoDescription
+import com.example.androidplayground.ui.util.preview.previewCharacterWithImage
 import com.example.domain.entity.MarvelCharacter
 
 @Composable
@@ -33,13 +37,11 @@ fun MarvelCharacterListScreen(
     onItemClicked: (marvelCharacter: MarvelCharacter) -> Unit,
     onError: () -> Unit
 ) {
-    val data: MarvelCharacterListViewModel.CharacterListData = viewModel.state.collectAsState().value
+    val data: MarvelCharacterListViewModel.CharacterListData =
+        viewModel.state.collectAsState().value
 
-    OnLifecycleEvent { _, event ->
-        when (event) {
-            Lifecycle.Event.ON_RESUME -> viewModel.getCharacters()
-            else -> {}
-        }
+    OnLifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        viewModel.getCharacters()
     }
 
     BackgroundImage()
@@ -48,9 +50,11 @@ fun MarvelCharacterListScreen(
         MarvelCharacterListViewModel.CharacterListState.LOADING -> {
             Loader()
         }
+
         MarvelCharacterListViewModel.CharacterListState.SHOW_CHARACTERS -> {
             ShowCharacters(data.characterList, onItemClicked)
         }
+
         MarvelCharacterListViewModel.CharacterListState.ERROR -> {
             data.exception?.let { ErrorDialog(it, onError) }
         }
@@ -58,7 +62,10 @@ fun MarvelCharacterListScreen(
 }
 
 @Composable
-private fun ShowCharacters(characterList: List<MarvelCharacter>, onItemClicked: (marvelCharacter: MarvelCharacter) -> Unit) {
+private fun ShowCharacters(
+    characterList: List<MarvelCharacter>,
+    onItemClicked: (marvelCharacter: MarvelCharacter) -> Unit
+) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -104,11 +111,18 @@ private fun getScreenConstrainSet() = ConstraintSet {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ShowCharacters() {
     AndroidPlayGroundTheme {
-        ShowCharacters(listOf(MarvelCharacter(id = 9292, name = "Muriman", description = "Qué es eso?? Es Muriman", img = ""))) { }
+        ShowCharacters(
+            listOf(
+                previewCharacterDefault,
+                previewCharacterWithImage,
+                previewCharacterNoDescription,
+                previewCharacterLongDescription
+            )
+        ) { }
     }
 }
 

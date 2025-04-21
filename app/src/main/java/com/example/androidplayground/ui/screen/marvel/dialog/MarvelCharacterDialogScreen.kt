@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import com.example.androidplayground.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -30,6 +29,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.component.CardContentText
 import com.example.androidplayground.ui.component.CardDescriptionText
 import com.example.androidplayground.ui.component.RemoteImage
@@ -40,6 +40,7 @@ import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDial
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 import com.example.androidplayground.ui.theme.GradientEnd
 import com.example.androidplayground.ui.theme.GradientStart
+import com.example.androidplayground.ui.util.preview.previewCharacterDefault
 import com.example.domain.entity.MarvelCharacter
 
 @Composable
@@ -48,10 +49,15 @@ fun MarvelCharacterDialogScreen(
     viewModel: MarvelCharacterDialogViewModel = hiltViewModel(),
     onDismiss: () -> Unit
 ) {
-    val data: MarvelCharacterDialogViewModel.MarvelCharacterDialogData = viewModel.state.collectAsState().value
+    val data: MarvelCharacterDialogViewModel.MarvelCharacterDialogData =
+        viewModel.state.collectAsState().value
 
     when (data.state) {
-        MarvelCharacterDialogViewModel.MarvelCharacterDialogState.DRAW -> DrawScreen(viewModel, marvelCharacter)
+        MarvelCharacterDialogViewModel.MarvelCharacterDialogState.DRAW -> DrawScreen(
+            viewModel,
+            marvelCharacter
+        )
+
         MarvelCharacterDialogViewModel.MarvelCharacterDialogState.ON_DIALOG_DISMISSED -> {
             LaunchedEffect(Unit) {
                 onDismiss()
@@ -96,7 +102,10 @@ fun DrawScreen(viewModel: MarvelCharacterDialogViewModel, marvelCharacter: Marve
                     constraintSet = getScreenConstraintSet()
                 ) {
                     CardContentText(
-                        text = stringResource(id = R.string.marvel_character_detail_screen_id, marvelCharacter.id),
+                        text = stringResource(
+                            id = R.string.marvel_character_detail_screen_id,
+                            marvelCharacter.id
+                        ),
                         modifier = Modifier
                             .layoutId(CHARACTER_LAYOUT_ID)
                             .padding(10.dp)
@@ -164,7 +173,7 @@ private fun getScreenConstraintSet() = ConstraintSet {
 @Composable
 private fun MarvelCharacterDialogScreenPreview() {
     AndroidPlayGroundTheme {
-        MarvelCharacterDialogScreen(MarvelCharacter(9292, "Muriman", "Es genial", "")) { }
+        MarvelCharacterDialogScreen(previewCharacterDefault) {}
     }
 }
 

@@ -14,7 +14,7 @@ import com.example.androidplayground.ui.screen.main.MainScreen
 import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreen
 import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreen
 import com.example.androidplayground.ui.screen.marvel.splash.SplashScreen
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreen
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreen
 import com.google.gson.Gson
 
 fun NavGraphBuilder.addFeedScreenGraph(navController: NavController) {

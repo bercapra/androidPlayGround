@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import com.example.androidplayground.R
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +19,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.component.BackgroundImage
 import com.example.androidplayground.ui.component.ContentText
 import com.example.androidplayground.ui.component.TitleText
@@ -27,7 +27,7 @@ import com.example.androidplayground.ui.screen.main.MainScreenId.BUTTON_LAYOUT_I
 import com.example.androidplayground.ui.screen.main.MainScreenId.CONTENT_LAYOUT_ID
 import com.example.androidplayground.ui.screen.main.MainScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
-import com.example.androidplayground.ui.util.OnLifecycleEvent
+import com.example.androidplayground.ui.util.OnLifecycleEventEffect
 
 @Composable
 fun MainScreen(
@@ -36,12 +36,12 @@ fun MainScreen(
 ) {
     val data: MainViewModel.MainData = viewModel.state.collectAsState().value
 
-    OnLifecycleEvent { _, event ->
-        when (event) {
-            Lifecycle.Event.ON_CREATE -> viewModel.draw()
-            Lifecycle.Event.ON_STOP -> viewModel.onStop()
-            else -> {}
-        }
+    OnLifecycleEventEffect(Lifecycle.Event.ON_CREATE) {
+        viewModel.draw()
+    }
+
+    OnLifecycleEventEffect(Lifecycle.Event.ON_STOP) {
+        viewModel.onStop()
     }
 
     when (data.state) {

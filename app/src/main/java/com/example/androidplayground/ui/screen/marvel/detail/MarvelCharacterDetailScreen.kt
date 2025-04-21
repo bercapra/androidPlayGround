@@ -1,4 +1,4 @@
-package com.example.androidplayground.ui.screen.main
+package com.example.androidplayground.ui.screen.marvel.detail
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
-import com.example.androidplayground.R
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,20 +18,24 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.component.BackgroundImage
 import com.example.androidplayground.ui.component.CardContentText
 import com.example.androidplayground.ui.component.ContentText
 import com.example.androidplayground.ui.component.ErrorDialog
 import com.example.androidplayground.ui.component.Loader
 import com.example.androidplayground.ui.component.RemoteImage
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.CHARACTER_LAYOUT_ID
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.DESCRIPTION_LAYOUT_ID
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.DISCLAIMER_LAYOUT_ID
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.IMAGE_LAYOUT_ID
-import com.example.androidplayground.ui.screen.main.MarvelCharacterDetailScreenId.NAME_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.CHARACTER_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.DESCRIPTION_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.DISCLAIMER_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.IMAGE_LAYOUT_ID
+import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.NAME_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
-import com.example.androidplayground.ui.util.OnLifecycleEvent
-import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailViewModel
+import com.example.androidplayground.ui.util.OnLifecycleEventEffect
+import com.example.androidplayground.ui.util.preview.previewCharacterDefault
+import com.example.androidplayground.ui.util.preview.previewCharacterLongDescription
+import com.example.androidplayground.ui.util.preview.previewCharacterNoDescription
+import com.example.androidplayground.ui.util.preview.previewCharacterWithImage
 import com.example.domain.entity.MarvelCharacter
 
 @Composable
@@ -42,13 +45,11 @@ fun MarvelCharacterDetailScreen(
     onImageClicked: (marvelCharacter: MarvelCharacter) -> Unit,
     onError: () -> Unit
 ) {
-    val data: MarvelCharacterDetailViewModel.CharacterDetailData = viewModel.state.collectAsState().value
+    val data: MarvelCharacterDetailViewModel.CharacterDetailData =
+        viewModel.state.collectAsState().value
 
-    OnLifecycleEvent { _, event ->
-        when (event) {
-            Lifecycle.Event.ON_RESUME -> viewModel.getCharacter(marvelCharacterId)
-            else -> {}
-        }
+    OnLifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        viewModel.getCharacter(marvelCharacterId)
     }
 
     BackgroundImage()
@@ -57,9 +58,11 @@ fun MarvelCharacterDetailScreen(
         MarvelCharacterDetailViewModel.CharacterDetailState.LOADING -> {
             Loader()
         }
+
         MarvelCharacterDetailViewModel.CharacterDetailState.SHOW_CHARACTER -> {
             data.marvelCharacter?.let { ShowCharacter(it, onImageClicked) }
         }
+
         MarvelCharacterDetailViewModel.CharacterDetailState.ERROR -> {
             data.exception?.let { ErrorDialog(it, onError) }
         }
@@ -67,7 +70,10 @@ fun MarvelCharacterDetailScreen(
 }
 
 @Composable
-fun ShowCharacter(marvelCharacter: MarvelCharacter, onImageClicked: (marvelCharacter: MarvelCharacter) -> Unit) {
+fun ShowCharacter(
+    marvelCharacter: MarvelCharacter,
+    onImageClicked: (marvelCharacter: MarvelCharacter) -> Unit
+) {
     val scrollState = rememberScrollState()
 
     ConstraintLayout(
@@ -81,7 +87,10 @@ fun ShowCharacter(marvelCharacter: MarvelCharacter, onImageClicked: (marvelChara
         constraintSet = getScreenConstraintSet()
     ) {
         ContentText(
-            text = stringResource(id = R.string.marvel_character_detail_screen_id, marvelCharacter.id),
+            text = stringResource(
+                id = R.string.marvel_character_detail_screen_id,
+                marvelCharacter.id
+            ),
             modifier = Modifier.layoutId(CHARACTER_LAYOUT_ID)
         )
         RemoteImage(
@@ -99,9 +108,7 @@ fun ShowCharacter(marvelCharacter: MarvelCharacter, onImageClicked: (marvelChara
                 .padding(top = 15.dp)
         )
         ContentText(
-            text = if (marvelCharacter.description.isNotEmpty()) {
-                marvelCharacter.description
-            } else {
+            text = marvelCharacter.description.ifEmpty {
                 stringResource(id = R.string.marvel_character_detail_screen_no_description)
             },
             modifier = Modifier
@@ -157,11 +164,35 @@ private fun getScreenConstraintSet() = ConstraintSet {
     }
 }
 
-@Preview
+@Preview(name = "Default character")
 @Composable
-fun MarvelCharacterDetailScreenPreview() {
+fun MarvelCharacterDefaultPreview() {
     AndroidPlayGroundTheme {
-        ShowCharacter(MarvelCharacter(id = 9292, name = "Muriman", description = "Qué es eso?? Es Muriman", img = "")) { }
+        ShowCharacter(previewCharacterDefault) {}
+    }
+}
+
+@Preview(name = "Character with image")
+@Composable
+fun MarvelCharacterWithImagePreview() {
+    AndroidPlayGroundTheme {
+        ShowCharacter(previewCharacterWithImage) {}
+    }
+}
+
+@Preview(name = "No description")
+@Composable
+fun MarvelCharacterNoDescriptionPreview() {
+    AndroidPlayGroundTheme {
+        ShowCharacter(previewCharacterNoDescription) {}
+    }
+}
+
+@Preview(name = "Long description")
+@Composable
+fun MarvelCharacterLongDescriptionPreview() {
+    AndroidPlayGroundTheme {
+        ShowCharacter(previewCharacterLongDescription) {}
     }
 }
 
