@@ -52,17 +52,19 @@ fun MarvelCharacterDialogScreen(
     val data: MarvelCharacterDialogViewModel.MarvelCharacterDialogData =
         viewModel.state.collectAsState().value
 
-    when (data.state) {
-        MarvelCharacterDialogViewModel.MarvelCharacterDialogState.DRAW -> DrawScreen(
-            viewModel,
-            marvelCharacter
-        )
-
-        MarvelCharacterDialogViewModel.MarvelCharacterDialogState.ON_DIALOG_DISMISSED -> {
-            LaunchedEffect(Unit) {
-                onDismiss()
-            }
+    // 🔐 Side-effect control by LaunchedEffect based on state
+    LaunchedEffect(data.state) {
+        if (data.state == MarvelCharacterDialogViewModel.MarvelCharacterDialogState.ON_DIALOG_DISMISSED) {
+            onDismiss()
         }
+    }
+
+    // 🖼️ id need it Render the UI
+    if (data.state == MarvelCharacterDialogViewModel.MarvelCharacterDialogState.DRAW) {
+        DrawScreen(
+            viewModel = viewModel,
+            marvelCharacter = marvelCharacter
+        )
     }
 }
 
