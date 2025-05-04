@@ -11,7 +11,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 
 @Composable
@@ -28,7 +30,7 @@ fun ErrorDialog(exception: Exception, onError: () -> Unit) {
                         onError()
                     }
                 ) {
-                    Text(text = "Confirm")
+                    Text(text = stringResource(R.string.confirm))
                 }
             },
             dismissButton = {
@@ -38,15 +40,20 @@ fun ErrorDialog(exception: Exception, onError: () -> Unit) {
                         onError()
                     }
                 ) {
-                    Text(text = "Dismiss")
+                    Text(text = stringResource(R.string.dismiss))
                 }
             },
-            icon = { Icon(Icons.Filled.Warning, contentDescription = "Warning") },
+            icon = {
+                Icon(
+                    Icons.Filled.Warning,
+                    contentDescription = stringResource(R.string.warning)
+                )
+            },
             title = {
-                Text(text = "Something got wrong!")
+                Text(text = stringResource(R.string.something_got_wrong))
             },
             text = {
-                Text(text = exception.message ?: "Se shrompió")
+                Text(text = exception.message ?: stringResource(R.string.broken_message))
             }
         )
     }
@@ -56,6 +63,6 @@ fun ErrorDialog(exception: Exception, onError: () -> Unit) {
 @Composable
 private fun ErrorDialogPreview() {
     AndroidPlayGroundTheme {
-        ErrorDialog(Exception("Se shrompio!")) { }
+        ErrorDialog(Exception(stringResource(R.string.broken_message))) { }
     }
 }

@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,6 +23,7 @@ import com.example.androidplayground.ui.component.TitleText
 import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.CONTENT_LAYOUT_ID
 import com.example.androidplayground.ui.screen.marvel.list.MarvelCharacterListScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
+import com.example.androidplayground.ui.theme.Dimens
 import com.example.androidplayground.ui.util.OnLifecycleEventEffect
 import com.example.androidplayground.ui.util.preview.previewCharacterDefault
 import com.example.androidplayground.ui.util.preview.previewCharacterLongDescription
@@ -69,7 +69,11 @@ private fun ShowCharacters(
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 25.dp, end = 15.dp, bottom = 15.dp),
+            .padding(
+                top = Dimens.MarvelCharacterListTopPadding,
+                end = Dimens.MarvelPadding,
+                bottom = Dimens.MarvelPadding
+            ),
         constraintSet = getScreenConstrainSet()
     ) {
         TitleText(

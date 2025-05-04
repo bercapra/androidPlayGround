@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -38,6 +37,7 @@ import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDial
 import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.IMAGE_LAYOUT_ID
 import com.example.androidplayground.ui.screen.marvel.dialog.MarvelCharacterDialogScreenId.NAME_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
+import com.example.androidplayground.ui.theme.Dimens
 import com.example.androidplayground.ui.theme.GradientEnd
 import com.example.androidplayground.ui.theme.GradientStart
 import com.example.androidplayground.ui.util.preview.previewCharacterDefault
@@ -59,7 +59,7 @@ fun MarvelCharacterDialogScreen(
         }
     }
 
-    // 🖼️ id need it Render the UI
+    // 🖼️ if need it Render the UI
     if (data.state == MarvelCharacterDialogViewModel.MarvelCharacterDialogState.DRAW) {
         DrawScreen(
             viewModel = viewModel,
@@ -89,9 +89,9 @@ fun DrawScreen(viewModel: MarvelCharacterDialogViewModel, marvelCharacter: Marve
             Card(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(vertical = 50.dp),
-                shape = RoundedCornerShape(topEnd = 75.dp, bottomStart = 75.dp),
-                border = BorderStroke(8.dp, Color.Black)
+                    .padding(vertical = Dimens.MarvelCharacterDialogScreenCardPadding),
+                shape = RoundedCornerShape(topEnd = Dimens.RoundedCornerShape, bottomStart = Dimens.RoundedCornerShape),
+                border = BorderStroke(Dimens.BorderStroke, Color.Black)
             ) {
                 ConstraintLayout(
                     modifier = Modifier
@@ -110,7 +110,7 @@ fun DrawScreen(viewModel: MarvelCharacterDialogViewModel, marvelCharacter: Marve
                         ),
                         modifier = Modifier
                             .layoutId(CHARACTER_LAYOUT_ID)
-                            .padding(10.dp)
+                            .padding(Dimens.MarvelCharacterDialogScreenCardCharacterPadding)
                     )
                     RemoteImage(
                         imgPath = marvelCharacter.img,
@@ -122,7 +122,7 @@ fun DrawScreen(viewModel: MarvelCharacterDialogViewModel, marvelCharacter: Marve
                         modifier = Modifier
                             .layoutId(NAME_LAYOUT_ID)
                             .fillMaxWidth()
-                            .padding(top = 15.dp)
+                            .padding(top = Dimens.MarvelPadding)
                     )
                     CardDescriptionText(
                         text = marvelCharacter.description.ifEmpty {
@@ -131,7 +131,7 @@ fun DrawScreen(viewModel: MarvelCharacterDialogViewModel, marvelCharacter: Marve
                         modifier = Modifier
                             .layoutId(DESCRIPTION_LAYOUT_ID)
                             .fillMaxWidth()
-                            .padding(top = 15.dp)
+                            .padding(top = Dimens.MarvelPadding)
                     )
                 }
             }

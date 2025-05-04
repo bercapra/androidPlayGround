@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
+import com.example.androidplayground.ui.theme.Dimens
 
 @Composable
 fun RemoteImage(imgPath: String, contentDescription: String, modifier: Modifier) {
@@ -19,11 +19,16 @@ fun RemoteImage(imgPath: String, contentDescription: String, modifier: Modifier)
         model = imgPath,
         contentDescription = contentDescription,
         modifier = modifier
-            .width(200.dp)
-            .height(170.dp)
-            .clip(RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp))
+            .width(Dimens.RemoteImageWidth)
+            .height(Dimens.RemoteImageHeight)
+            .clip(
+                RoundedCornerShape(
+                    topStart = Dimens.RemoteImageRoundedCornerShape,
+                    topEnd = Dimens.RemoteImageRoundedCornerShape
+                )
+            )
             .background(Color.Black)
-            .border(BorderStroke(8.dp, Color.Black)),
+            .border(BorderStroke(Dimens.BorderStroke, Color.Black)),
         loading = {
             Loader()
         }

@@ -12,38 +12,47 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.integerResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
+import com.example.androidplayground.ui.theme.Dimens
 import com.example.androidplayground.ui.theme.GradientEnd
 import com.example.androidplayground.ui.theme.GradientStart
 import com.example.domain.entity.MarvelCharacter
 
 @Composable
-fun MarvelCard(marvelCharacter: MarvelCharacter, onCardClicked: (marvelCharacter: MarvelCharacter) -> Unit) {
+fun MarvelCard(
+    marvelCharacter: MarvelCharacter,
+    onCardClicked: (marvelCharacter: MarvelCharacter) -> Unit
+) {
     val horizontalGradient = Brush.horizontalGradient(colors = listOf(GradientStart, GradientEnd))
 
     Card(
         modifier = Modifier
             .fillMaxSize()
             .clickable { onCardClicked(marvelCharacter) }
-            .padding(vertical = 15.dp),
-        shape = RoundedCornerShape(topEnd = 75.dp, bottomEnd = 75.dp),
-        border = BorderStroke(8.dp, Color.Black)
+            .padding(vertical = Dimens.MarvelPadding),
+        shape = RoundedCornerShape(
+            topEnd = Dimens.RoundedCornerShape,
+            bottomEnd = Dimens.RoundedCornerShape
+        ),
+        border = BorderStroke(Dimens.BorderStroke, Color.Black)
     ) {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
                 .background(brush = horizontalGradient)
-                .padding(15.dp),
+                .padding(Dimens.MarvelPadding),
         ) {
             val (image, name) = createRefs()
             createVerticalChain(image, name)
 
             RemoteImage(
                 imgPath = marvelCharacter.img,
-                contentDescription = "",
+                contentDescription = stringResource(R.string.empty_value),
                 modifier = Modifier
                     .constrainAs(image) {
                         start.linkTo(parent.start)
@@ -56,7 +65,7 @@ fun MarvelCard(marvelCharacter: MarvelCharacter, onCardClicked: (marvelCharacter
                 text = marvelCharacter.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 15.dp)
+                    .padding(top = Dimens.MarvelPadding)
                     .constrainAs(name) {
                         start.linkTo(parent.start)
                         top.linkTo(image.bottom)
@@ -72,6 +81,13 @@ fun MarvelCard(marvelCharacter: MarvelCharacter, onCardClicked: (marvelCharacter
 @Composable
 private fun MarvelCardPreview() {
     AndroidPlayGroundTheme {
-        MarvelCard(MarvelCharacter(9292, "Muriman", "Es genial", "")) { }
+        MarvelCard(
+            MarvelCharacter(
+                integerResource(R.integer.hero_muri_man_id),
+                stringResource(R.string.hero_muri_man),
+                stringResource(R.string.hero_description_muri_man),
+                stringResource(R.string.empty_value)
+            )
+        ) { }
     }
 }

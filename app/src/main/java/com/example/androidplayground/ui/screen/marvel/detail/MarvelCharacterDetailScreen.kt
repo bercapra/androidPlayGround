@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,6 +30,7 @@ import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDeta
 import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.IMAGE_LAYOUT_ID
 import com.example.androidplayground.ui.screen.marvel.detail.MarvelCharacterDetailScreenId.NAME_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
+import com.example.androidplayground.ui.theme.Dimens
 import com.example.androidplayground.ui.util.OnLifecycleEventEffect
 import com.example.androidplayground.ui.util.preview.previewCharacterDefault
 import com.example.androidplayground.ui.util.preview.previewCharacterLongDescription
@@ -79,7 +79,7 @@ fun ShowCharacter(
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .padding(15.dp)
+            .padding(Dimens.MarvelPadding)
             .scrollable(
                 state = scrollState,
                 orientation = Orientation.Vertical
@@ -105,7 +105,7 @@ fun ShowCharacter(
             modifier = Modifier
                 .layoutId(NAME_LAYOUT_ID)
                 .fillMaxWidth()
-                .padding(top = 15.dp)
+                .padding(top = Dimens.MarvelPadding)
         )
         ContentText(
             text = marvelCharacter.description.ifEmpty {
@@ -114,14 +114,14 @@ fun ShowCharacter(
             modifier = Modifier
                 .layoutId(DESCRIPTION_LAYOUT_ID)
                 .fillMaxWidth()
-                .padding(top = 15.dp)
+                .padding(top = Dimens.MarvelPadding)
         )
         CardContentText(
             text = stringResource(id = R.string.marvel_character_detail_screen_disclaimer),
             modifier = Modifier
                 .layoutId(DISCLAIMER_LAYOUT_ID)
                 .fillMaxWidth()
-                .padding(top = 15.dp)
+                .padding(top = Dimens.MarvelPadding)
         )
     }
 }

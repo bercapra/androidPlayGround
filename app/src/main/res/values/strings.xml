@@ -11,4 +11,16 @@
     <string name="marvel_character_detail_screen_content_description">Content description</string>
     <string name="marvel_character_detail_screen_no_description">No description available</string>
     <string name="marvel_character_detail_screen_disclaimer">*Tap on the image to see the dialog version</string>
+
+    <string name="empty_value" />
+
+    <string name="hero_muri_man">Muriman</string>
+    <string name="hero_description_muri_man">Es genial</string>
+    <string name="confirm">Confirm</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="warning">Warning</string>
+    <string name="something_got_wrong">Something got wrong!</string>
+    <string name="broken_message">Se shrompió</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
 </resources>

@@ -27,6 +27,7 @@ import com.example.androidplayground.ui.screen.main.MainScreenId.BUTTON_LAYOUT_I
 import com.example.androidplayground.ui.screen.main.MainScreenId.CONTENT_LAYOUT_ID
 import com.example.androidplayground.ui.screen.main.MainScreenId.TITLE_LAYOUT_ID
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
+import com.example.androidplayground.ui.theme.Dimens
 import com.example.androidplayground.ui.util.OnLifecycleEventEffect
 
 @Composable
@@ -62,7 +63,7 @@ private fun DrawScreen(viewModel: MainViewModel) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .padding(15.dp),
+            .padding(Dimens.MarvelPadding),
         constraintSet = getScreenConstrainSet()
     ) {
         TitleText(

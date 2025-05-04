@@ -5,10 +5,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.androidplayground.R
 import com.example.androidplayground.ui.theme.AndroidPlayGroundTheme
 
 @Composable
@@ -17,7 +21,8 @@ fun TitleText(text: String, modifier: Modifier) {
         text = text,
         modifier = modifier,
         color = Color.Red,
-        fontSize = 30.sp,
+        fontSize = dimensionResource(R.dimen.title_text_size).value.sp,
+        fontFamily = FontFamily.Serif,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     )
@@ -28,7 +33,7 @@ fun TitleText(text: String, modifier: Modifier) {
 private fun TitleTextPreview() {
     AndroidPlayGroundTheme {
         TitleText(
-            text = "Title",
+            text = stringResource(R.string.title),
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -40,7 +45,8 @@ fun ContentText(text: String, modifier: Modifier) {
         text = text,
         modifier = modifier,
         color = Color.Red,
-        fontSize = 20.sp,
+        fontSize = dimensionResource(R.dimen.content_text_size).value.sp,
+        fontFamily = FontFamily.Serif,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     )
@@ -51,7 +57,7 @@ fun ContentText(text: String, modifier: Modifier) {
 private fun ContentTextPreview() {
     AndroidPlayGroundTheme {
         ContentText(
-            text = "Content",
+            text = stringResource(R.string.content),
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -63,7 +69,8 @@ fun CardContentText(text: String, modifier: Modifier) {
         text = text,
         modifier = modifier,
         color = Color.White,
-        fontSize = 18.sp,
+        fontSize = dimensionResource(R.dimen.card_content_text_size).value.sp,
+        fontFamily = FontFamily.Serif,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     )
@@ -74,7 +81,7 @@ fun CardContentText(text: String, modifier: Modifier) {
 private fun CardContentTextPreview() {
     AndroidPlayGroundTheme {
         CardContentText(
-            text = "Content",
+            text = stringResource(R.string.content),
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -86,7 +93,8 @@ fun CardDescriptionText(text: String, modifier: Modifier) {
         text = text,
         modifier = modifier,
         color = Color.White,
-        fontSize = 15.sp,
+        fontSize = dimensionResource(R.dimen.card_description_text_size).value.sp,
+        fontFamily = FontFamily.Serif,
         textAlign = TextAlign.Center
     )
 }
@@ -96,7 +104,7 @@ fun CardDescriptionText(text: String, modifier: Modifier) {
 private fun CardDescriptionTextPreview() {
     AndroidPlayGroundTheme {
         CardDescriptionText(
-            text = "Content",
+            text = stringResource(R.string.content),
             modifier = Modifier.fillMaxWidth()
         )
     }
